@@ -20,4 +20,8 @@ export class TodoHttpService {
       isDone: false,
     })
   }
+
+  update(toDoItem: ToDoItem){
+    return this.httpClient.put(`https://localhost:44309/ToDoItem/${toDoItem.id}`, toDoItem)
+  }
 }

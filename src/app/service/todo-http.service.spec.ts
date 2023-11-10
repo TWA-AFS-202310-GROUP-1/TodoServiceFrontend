@@ -47,4 +47,29 @@ describe('TodoHttpService', () => {
     })
     expect(httpClientSpy.post.calls.count()).toEqual(1)
   });
+
+  it('should update item when call update', () => {
+    httpClientSpy.put.and.returnValue(asyncData
+      (
+        { id: 3, 
+          title: "update item", 
+          description: "update description", 
+          isDone: true
+        }))
+    service.update({
+      id: 3, 
+      title: "update item", 
+      description: "update description", 
+      isDone: true
+  }).subscribe(data => {
+      expect(data).toEqual({
+        id: 3, 
+        title: "update item", 
+        description: "update description", 
+        isDone: true
+      })
+    })
+    expect(httpClientSpy.put.calls.count()).toEqual(1)
+  });
+
 });
