@@ -6,12 +6,17 @@ import { AppComponent } from './app.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { CreateToDoComponent } from './create-to-do/create-to-do.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { Routes } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDoListComponent,
-    CreateToDoComponent
+    CreateToDoComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,
