@@ -5,7 +5,7 @@ import { ToDoItem } from 'src/model/ToDoItem';
 @Component({
   selector: 'app-to-do-list',
   templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.css']
+  styleUrls: ['./to-do-list.component.css'],
 })
 export class ToDoListComponent {
   items: ToDoItem[] = [
@@ -13,13 +13,13 @@ export class ToDoListComponent {
       id: 1,
       title: 'food',
       description: 'buy milk',
-      isDone: false
+      isDone: false,
     },
     {
       id: 2,
       title: 'food',
       description: 'buy eggs',
-      isDone: false
+      isDone: false,
     },
-  ]
+  ];
 }
