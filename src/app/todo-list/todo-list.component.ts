@@ -16,4 +16,8 @@ export class TodoListComponent {
   ngOnInit() {
     this.items = this.todoService.getAll()
   }
+
+  OnMarkDone(id: number) {
+    this.todoService.markDone(id)
+  }
 }
