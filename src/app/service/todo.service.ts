@@ -41,4 +41,8 @@ export class TodoService {
       item.isDone = true;
     }
   }
+
+  getItemById(index: number){
+    return this.items.find((x) => x.id == index);
+  }
 }
