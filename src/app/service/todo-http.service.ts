@@ -22,7 +22,7 @@ export class TodoHttpService {
   }
 
   update(toDoItem: ToDoItem){
-    return this.httpClient.put(`https://localhost:44309/ToDoItem/${toDoItem.id}`, toDoItem)
+    return this.httpClient.put<ToDoItem>(`https://localhost:44309/ToDoItem/${toDoItem.id}`, toDoItem)
   }
 
   getItemById(id: number){
