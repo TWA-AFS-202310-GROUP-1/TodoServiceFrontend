@@ -18,6 +18,4 @@ export class TodoDetailComponent {
     console.log(id)
     this.item = this.todoService.getItemById(Number(id))
   }
-
-
 }
