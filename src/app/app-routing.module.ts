@@ -5,7 +5,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 
 const routes: Routes = [
   {path: '', component: TodoListComponent},
-  {path:'detail/:detailid',component: TodoDetailComponent}
+  {path:'detail/:detailId',component: TodoDetailComponent}
 ];
 
 @NgModule({
