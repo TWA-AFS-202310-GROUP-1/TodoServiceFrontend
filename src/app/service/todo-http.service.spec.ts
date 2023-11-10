@@ -91,4 +91,23 @@ describe('TodoHttpService', () => {
     expect(httpClientSpy.get.calls.count()).toEqual(1)
   });
 
+  it('should delete item when call delete', () => {
+    httpClientSpy.delete.and.returnValue(asyncData
+      (
+        { id: 3, 
+          title: "delete item", 
+          description: "delete description", 
+          isDone: true
+        }))
+    service.delete(3).subscribe(data => {
+      expect(data).toEqual(
+        { 
+          id: 3, 
+          title: "delete item", 
+          description: "delete description", 
+          isDone: true
+      })
+    })
+    expect(httpClientSpy.delete.calls.count()).toEqual(1)
+  });
 });
