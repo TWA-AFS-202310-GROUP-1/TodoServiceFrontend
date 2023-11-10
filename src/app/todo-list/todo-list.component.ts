@@ -20,10 +20,16 @@ export class TodoListComponent {
 
   ngOnInit() {
     // this.items = this.todoService.getAll()
+    // this.todoHttpService.getAll().subscribe(todoItems =>{
+    //   this.items = todoItems
+    // })
+    this.refreshList();
+  }
+
+  refreshList() {
     this.todoHttpService.getAll().subscribe(todoItems =>{
       this.items = todoItems
     })
-
   }
   onMarkDone(id: number){
     this.todoService.markDone(id)
@@ -31,4 +37,6 @@ export class TodoListComponent {
   onGotoDetail(id: number){
     this.router.navigateByUrl(`/detail/${id}`)
   }
+
+
 }
