@@ -34,7 +34,7 @@ export class TodoService {
     })
   }
 
-  markDown(id:number){
+  markDone(id:number){
     const item = this.items.find(i=>i.id ==id)
     if(item)
     {

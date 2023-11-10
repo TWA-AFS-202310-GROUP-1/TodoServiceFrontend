@@ -19,6 +19,6 @@ export class TodoListComponent {
 
   }
   onMarkDone(id: number){
-    this.todoService.markDown(id)
+    this.todoService.markDone(id)
   }
 }
