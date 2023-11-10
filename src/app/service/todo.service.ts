@@ -35,4 +35,11 @@ export class TodoService {
     })
   }
 
+  markDone(id: number){
+    const curItem = this.items.find(item => item.id = id)
+    if(curItem){
+      curItem.isDone = true
+    }
+  }
+
 }
