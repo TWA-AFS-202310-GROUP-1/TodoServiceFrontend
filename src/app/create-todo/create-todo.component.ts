@@ -9,8 +9,7 @@ import { TodohttpService } from '../service/todohttp.service';
   styleUrls: ['./create-todo.component.css'],
 })
 export class CreateTodoComponent {
-
-@Output() created = new EventEmitter
+  @Output() created = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,15 +25,13 @@ export class CreateTodoComponent {
   onSubmit() {
     const formValues = this.todoForm.value;
     if (formValues.title && formValues.description) {
-      //this.todoService.create(formValues.title, formValues.description);
       this.todoHttpService
         .create(formValues.title, formValues.description)
         .subscribe(() => {
           this.todoForm.reset();
+          this.created.emit();
         });
     }
     console.log(formValues);
-    //this.todoForm.reset()
-    this.created.emit()
   }
 }

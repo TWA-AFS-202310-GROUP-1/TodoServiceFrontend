@@ -22,5 +22,14 @@ export class TodohttpService {
       isDone: false
     })
   }
+
+  markDone(item:ToDoItem) {
+    return this.httpClient.put('https://localhost:44309/ToDoItem', {
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      isDone: item.isDone
+    })
+  }
 }
 
