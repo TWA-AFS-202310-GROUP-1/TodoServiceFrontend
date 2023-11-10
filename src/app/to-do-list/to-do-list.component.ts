@@ -19,9 +19,7 @@ export class ToDoListComponent {
     private todoHttpService: TodohttpService
   ) {}
   ngOnInit() {
-    this.todoHttpService.getAll().subscribe((todoItems) => {
-      this.items = todoItems;
-    });
+    this.refreshList();
   }
 
   onMarkDone(index: number) {

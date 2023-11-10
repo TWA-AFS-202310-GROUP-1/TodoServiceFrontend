@@ -31,5 +31,9 @@ export class TodohttpService {
       isDone: item.isDone
     })
   }
+
+  getItemById(index: number){
+    return this.httpClient.get<ToDoItem>(`https://localhost:44309/ToDoItem/${index}`)
+  }
 }
 
