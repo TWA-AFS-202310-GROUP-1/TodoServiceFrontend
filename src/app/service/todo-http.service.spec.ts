@@ -60,7 +60,7 @@ describe('TodoHttpService', () => {
       id: 3, 
       title: "update item", 
       description: "update description", 
-      isDone: true
+      isDone: false
   }).subscribe(data => {
       expect(data).toEqual({
         id: 3, 
@@ -70,6 +70,25 @@ describe('TodoHttpService', () => {
       })
     })
     expect(httpClientSpy.put.calls.count()).toEqual(1)
+  });
+
+  it('should get item by id when call getItemById', () => {
+    httpClientSpy.get.and.returnValue(asyncData
+      (
+        { id: 3, 
+          title: "get item", 
+          description: "get description", 
+          isDone: true
+        }))
+    service.getItemById(3).subscribe(data => {
+      expect(data).toEqual({
+        id: 3, 
+        title: "get item", 
+        description: "get description", 
+        isDone: true
+      })
+    })
+    expect(httpClientSpy.get.calls.count()).toEqual(1)
   });
 
 });

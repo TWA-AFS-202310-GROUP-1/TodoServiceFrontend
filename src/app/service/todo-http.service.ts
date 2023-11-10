@@ -24,4 +24,8 @@ export class TodoHttpService {
   update(toDoItem: ToDoItem){
     return this.httpClient.put(`https://localhost:44309/ToDoItem/${toDoItem.id}`, toDoItem)
   }
+
+  getItemById(id: number){
+    return this.httpClient.get<ToDoItem>(`https://localhost:44309/ToDoItem/${id}`)
+  }
 }
