@@ -1,18 +1,18 @@
-<div>To do detail</div>
+<h1>To do detail</h1>
 <div *ngIf="item">
-  <div>Id {{ item.id }}</div>
+  <h2>Id: {{ item.id }}</h2>
   <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
-    <div>
+    <h3>
       Title:
       <input formControlName="title" />
-    </div>
-    <div>
+    </h3>
+    <h3>
       Description: 
       <input formControlName="description" />
-    </div>
+    </h3>
     <div>
       <button type="submit">Update</button>
     </div>
   </form>
-  <div>isDone {{ item.isDone }}</div>
+  <h2>isDone: {{ item.isDone }}</h2>
 </div>
