@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TodoService } from '../service/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodohttpService } from '../service/todohttp.service';
@@ -12,7 +11,6 @@ import { TodohttpService } from '../service/todohttp.service';
 export class ToDoDetailComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private todoService: TodoService,
     private todoHttpService: TodohttpService
   ) {}
 
