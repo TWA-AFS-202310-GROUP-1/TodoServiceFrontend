@@ -39,5 +39,14 @@ export class TodohttpService {
   deleteItemById(index: number){
     return this.httpClient.delete(`https://localhost:44309/ToDoItem/${index}`)
   }
+
+  update(item:ToDoItem){
+    return this.httpClient.put(`https://localhost:44309/ToDoItem/${item.id}`, {
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      isDone: item.isDone
+    })
+  }
 }
 
