@@ -13,7 +13,7 @@ describe('TodoHttpService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient',['get'])
+    httpClientSpy = jasmine.createSpyObj('HttpClient',['get', 'post','put','delete'])
     service = new TodoHttpService(httpClientSpy)
   });
 
@@ -27,5 +27,24 @@ describe('TodoHttpService', () => {
       expect(data.length).toEqual(1)
     })
     expect(httpClientSpy.get.calls.count()).toEqual(1)
+  });
+
+  it('should get create a new item when call create', () => {
+    httpClientSpy.post.and.returnValue(asyncData
+      (
+        { id: 3, 
+          title: "Home work", 
+          description: "Have to complete home work", 
+          isDone: false}
+        ))
+    service.create('new item', 'new description').subscribe(data => {
+      expect(data).toEqual({
+          id: 3, 
+          title: "Home work", 
+          description: "Have to complete home work", 
+          isDone: false
+      })
+    })
+    expect(httpClientSpy.post.calls.count()).toEqual(1)
   });
 });
