@@ -30,6 +30,6 @@ export class TodoHttpService {
   }
 
   delete(id: number){
-    return this.httpClient.delete(`https://localhost:44309/ToDoItem/${id}`)
+    return this.httpClient.delete<ToDoItem>(`https://localhost:44309/ToDoItem/${id}`)
   }
 }
