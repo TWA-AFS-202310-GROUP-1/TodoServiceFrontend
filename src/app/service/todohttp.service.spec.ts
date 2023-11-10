@@ -1,16 +1,42 @@
 import { TestBed } from '@angular/core/testing';
 
 import { TodohttpService } from './todohttp.service';
+import { HttpClient } from '@angular/common/http';
+import { defer } from 'rxjs';
 
+function asyncData<T>(data: T) {
+  return defer(() => Promise.resolve(data));
+}
 describe('TodohttpService', () => {
   let service: TodohttpService;
+  let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(TodohttpService);
+    
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    service = new TodohttpService(httpClientSpy)
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should get all todo items when call getAll', () => {
+    httpClientSpy.get.and.returnValue(asyncData([
+      {
+        id: 0,
+        title: 'Home work',
+        description: 'Have to complete home work',
+        isDone: false,
+      }
+    ]))
+
+    service.getAll().subscribe(data =>{
+      expect(data.length).toEqual(1)
+    })
+
+
+    expect(httpClientSpy.get.calls.count()).toEqual(1)
+
   });
 });
