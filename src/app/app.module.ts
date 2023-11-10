@@ -8,22 +8,22 @@ import { CreateToDoComponent } from './create-to-do/create-to-do.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { Routes } from '@angular/router';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDoListComponent,
     CreateToDoComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
