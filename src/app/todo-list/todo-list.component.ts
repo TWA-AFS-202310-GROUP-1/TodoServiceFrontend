@@ -15,6 +15,10 @@ export class TodoListComponent {
   constructor(private todoServie: TodoService, private todoHttpService: TodoHttpService, private router: Router){}
 
   ngOnInit(){
+    this.refreshList()
+  }
+
+  refreshList(){
     this.todoHttpService.getAll().subscribe(todoItems => {
       this.items  = todoItems;
     })
