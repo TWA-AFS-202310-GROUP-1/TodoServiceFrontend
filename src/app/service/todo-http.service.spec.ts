@@ -12,7 +12,7 @@ describe('TodoHttpService', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient',['get'])
+    httpClientSpy = jasmine.createSpyObj('HttpClient',['get','post','put'])
     service = new TodoHttpService(httpClientSpy)
     
   });

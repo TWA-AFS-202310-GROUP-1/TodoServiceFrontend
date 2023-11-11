@@ -1,25 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs';
 import { ToDoItem } from 'src/model/ToDoItem';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoHttpService {
-
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
   getAll() {
-    return this.httpClient.get<ToDoItem[]>('https://localhost:44309/ToDoItem')
+    return this.httpClient.get<ToDoItem[]>('https://localhost:44309/ToDoItem');
   }
 
   create(title: string, description: string) {
-    return this.httpClient.post('https://localhost:44309/ToDoItem',{
+    return this.httpClient.post('https://localhost:44309/ToDoItem', {
       title: title,
       description: description,
-      isDone: false
+      isDone: false,
+    });
+  }
+
+  update(id: number) {
+    return this.getById(id).pipe(
+      switchMap((toDoItem)=>{
+      return this.httpClient.put('https://localhost:44309/ToDoItem/' + id, {
+          id: id,
+          title: toDoItem.title,
+          description: toDoItem.description,
+          isDone: true,
+        });
     })
+    )
+  }
+
+  getById(id: number) {
+    return this.httpClient.get<ToDoItem>(
+      'https://localhost:44309/ToDoItem/' + id
+    );
   }
 }

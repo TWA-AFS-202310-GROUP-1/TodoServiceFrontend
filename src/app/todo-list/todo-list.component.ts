@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ToDoItem } from 'src/model/ToDoItem';
 import { TodoService } from '../service/todo.service';
 import { Router } from '@angular/router';
@@ -10,28 +10,31 @@ import { TodoHttpService } from '../service/todo-http.service';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent {
-  items: ToDoItem[] = []
+  items: ToDoItem[] = [];
   constructor(
     private todoService: TodoService,
     private router: Router,
     private todoHttpService: TodoHttpService
-  ){}
+  ) {}
 
   ngOnInit() {
-    this.refreshList()
+    this.refreshList();
   }
 
   OnMarkDone(id: number) {
-    this.todoService.markDone(id)
+    // this.todoService.markDone(id)
+    this.todoHttpService.update(id).subscribe(() => {
+      this.refreshList();
+    });
   }
-  
+
   refreshList() {
-  this.todoHttpService.getAll().subscribe(todoItems => {
-    this.items = todoItems
-  })
-}
+    this.todoHttpService.getAll().subscribe((todoItems) => {
+      this.items = todoItems;
+    });
+  }
 
   onGoToDetail(id: number) {
-    this.router.navigateByUrl(`/detail/${id}`)
+    this.router.navigateByUrl(`/detail/${id}`);
   }
 }
