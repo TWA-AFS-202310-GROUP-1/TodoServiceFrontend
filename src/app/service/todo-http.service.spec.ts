@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { TodoHttpService } from './todo-http.service';
 import { HttpClient } from '@angular/common/http';
 import { defer } from 'rxjs';
+import { ToDoItem } from 'src/model/ToDoItem';
 
 function asyncData<T>(data: T){
   return defer(()=>Promise.resolve(data))
@@ -14,7 +15,7 @@ describe('TodoHttpService', () => {
   beforeEach(() => {
     // TestBed.configureTestingModule({});
     // service = TestBed.inject(TodoHttpService);
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
     service = new TodoHttpService(httpClientSpy)
   });
 
@@ -38,4 +39,22 @@ describe('TodoHttpService', () => {
 
     expect(httpClientSpy.get.calls.count()).toEqual(1)
   });
+
+  it('should create an item when call create', ()=>{
+    httpClientSpy.post.and.returnValue(asyncData(
+      {
+        id: 0,
+        title: 'Homework',
+        description: 'Have to complete home work',
+        isDone: false,
+      }
+    ))
+    service.create('Home work', 'Have to complete home work').subscribe(data=>{
+      expect(data.title).toEqual('Homework')
+      expect(data.description).toEqual('Have to complete home work')
+      expect(data.isDone).toEqual(false)
+    })
+    expect(httpClientSpy.post.calls.count()).toEqual(1)
+    })
 });
+
