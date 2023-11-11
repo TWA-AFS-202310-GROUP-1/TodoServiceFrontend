@@ -12,7 +12,7 @@ import { TodoHttpService } from '../service/todo-http.service';
 export class TodoListComponent {
   items: ToDoItem[] = [];
   constructor(
-    private todoService: TodoService,
+    // private todoService: TodoService,
     private router: Router,
     private todoHttpService: TodoHttpService
   ) {}
@@ -22,7 +22,7 @@ export class TodoListComponent {
   }
 
   OnMarkDone(id: number) {
-    this.todoHttpService.update(id,{isDone:true}).subscribe(() => {
+    this.todoHttpService.update(id, { isDone: true }).subscribe(() => {
       this.refreshList();
     });
   }
@@ -35,5 +35,11 @@ export class TodoListComponent {
 
   onGoToDetail(id: number) {
     this.router.navigateByUrl(`/detail/${id}`);
+  }
+
+  onDelete(id: number) {
+    this.todoHttpService.delete(id).subscribe(() => {
+      this.refreshList();
+    });
   }
 }

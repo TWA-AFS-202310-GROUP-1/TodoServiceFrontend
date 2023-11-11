@@ -19,6 +19,9 @@
       <button (click)="onGoToDetail(item.id)">
         View Detail
       </button>
+      <button [style.backgroundColor]='"red"' (click)="onDelete(item.id)">
+        Delete
+      </button>
     </td>
   </tr>
 </table>
