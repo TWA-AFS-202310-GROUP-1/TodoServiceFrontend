@@ -33,13 +33,13 @@ export class TodoService {
   //    })
   // }
 
-  markDone(id: number) {
-    const currentItem = this.items.find(item => item.id === id)
-    if(currentItem) {
-      currentItem.isDone = true
-    }
-  }
-  getItemById(id: number) {
-    return this.items.find(item => item.id === id)
-  }
+  // markDone(id: number) {
+  //   const currentItem = this.items.find(item => item.id === id)
+  //   if(currentItem) {
+  //     currentItem.isDone = true
+  //   }
+  // }
+  // getItemById(id: number) {
+  //   return this.items.find(item => item.id === id)
+  // }
 }
