@@ -57,7 +57,7 @@ describe('TodoHttpService', () => {
     expect(httpClientSpy.post.calls.count()).toEqual(1)
     })
 
-    it('should update isDone when call markDone', ()=>{
+    it('should update details when call update', ()=>{
       httpClientSpy.put.and.returnValue(asyncData(
         {
           id: 0,
@@ -68,8 +68,8 @@ describe('TodoHttpService', () => {
       ))
       var item:ToDoItem ={
           id: 0,
-          title: 'Homework',
-          description: 'Have to complete home work',
+          title: 'Homework1',
+          description: 'Have to complete home work1',
           isDone: false,
       }
       service.update(0, item).subscribe(data => {
@@ -80,5 +80,23 @@ describe('TodoHttpService', () => {
       })
       expect(httpClientSpy.put.calls.count()).toEqual(1)
     })
+
+    it('should get item by id when call getItemById', ()=>{
+      httpClientSpy.get.and.returnValue(asyncData(
+        {
+          id: 0,
+          title: 'Homework',
+          description: 'Have to complete home work',
+          isDone: false,
+        }
+      ))
+      service.getItemById(0).subscribe(data => {
+        expect(data.id).toEqual(0),
+        expect(data.title).toEqual('Homework'),
+        expect(data.description).toEqual('Have to complete home work'),
+        expect(data.isDone).toEqual(false)
+      })
+    })
+
 });
 
