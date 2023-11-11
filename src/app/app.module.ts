@@ -7,7 +7,6 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { CreateToDoComponent } from './create-to-do/create-to-do.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
-import { Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -22,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -29,6 +29,7 @@ input {
   border-radius: 4px;
   box-shadow: none;
   outline: none;
+  width: 250px;
 }
 
 input:focus {
