@@ -36,6 +36,7 @@ export class TodoDetailComponent {
     if(formValues.title && formValues.description && this.item){
       this.todoHttpService.update({id: this.item.id, title: formValues.title, description: formValues.description, isDone: this.item.isDone})
       .subscribe()
+      alert("Update successfully")
     }
   }
 
