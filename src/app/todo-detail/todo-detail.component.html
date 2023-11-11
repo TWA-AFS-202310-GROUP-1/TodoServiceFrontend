@@ -1,14 +1,22 @@
-<div>Todo Detail</div>
+<h2>Todo Detail</h2>
 <form [formGroup]="todoDetailForm" (ngSubmit)="onUpdate()" *ngIf="item">
-    <div>Id: {{item.id}}</div>
-    <div>
+    <div class="detail-label">
+        <label>Id: </label>
+        <span class = "detail-text">{{item.id}}</span>
+    </div>
+    <div class="detail-label">
         <label>Title: </label>
         <input formControlName = "title"/>
     </div>
-    <div>
+    <div class="detail-label">
         <label>Description: </label>
-        <input formControlName = "description"/>
+        <input class = "long-input" formControlName = "description"/>
     </div>
-    <div>isDone: {{item.isDone}}</div>
-    <button type = "submit">Update</button>
+    <div class="detail-label">
+        <label>IsDone: </label>
+        <span [style.color] = "textColor" class = "detail-text">{{item.isDone ? "True" : "False"}}</span>
+    </div>
+    <div class="detail-label">
+        <button type = "submit">Update</button>
+    </div>
 </form>

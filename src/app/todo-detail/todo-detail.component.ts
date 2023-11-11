@@ -39,4 +39,11 @@ export class TodoDetailComponent {
     }
   }
 
+  get textColor(){
+    if (this.item?.isDone){
+      return 'green'
+    }
+    return 'red'
+  }
+
 }
