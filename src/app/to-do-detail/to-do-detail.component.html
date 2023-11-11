@@ -4,11 +4,11 @@
   <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
     <h3>
       Title:
-      <input formControlName="title" />
+      <input formControlName="title" class="input-title"/>
     </h3>
     <h3>
       Description: 
-      <input formControlName="description" />
+      <input formControlName="description" class="input-description"/>
     </h3>
     <div>
       <button type="submit">Update</button>

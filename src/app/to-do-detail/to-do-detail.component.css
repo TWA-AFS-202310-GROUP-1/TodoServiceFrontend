@@ -1,0 +1,9 @@
+.input-title{
+    position: relative;
+    margin-left: 100px;
+}
+.input-description{
+    position: relative;
+    margin-left: 45px;
+    width: 500px;
+}
