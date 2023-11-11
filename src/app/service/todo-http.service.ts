@@ -20,4 +20,12 @@ export class TodoHttpService {
       isDone: false
     })
   }
+
+  update(id: number, item: ToDoItem){
+    return this.httpClient.put<ToDoItem>('https://localhost:44309/ToDoItem/'+id, {
+      title: item.title,
+      description: item.description,
+      isDone: item.isDone
+    })
+  }
 }

@@ -28,8 +28,9 @@ export class ToDoListComponent {
       this.items = todoItems)
   }
 
-  onMarkDone(id: number){
-    this.todoService.markDone(id)
+  onMarkDone(id: number, item:ToDoItem){
+    item.isDone = true
+    this.todoHttpService.update(id, item).subscribe()    
   }
 
   onGotoDetail(id: number){

@@ -15,7 +15,7 @@ describe('TodoHttpService', () => {
   beforeEach(() => {
     // TestBed.configureTestingModule({});
     // service = TestBed.inject(TodoHttpService);
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put']);
     service = new TodoHttpService(httpClientSpy)
   });
 
@@ -55,6 +55,30 @@ describe('TodoHttpService', () => {
       expect(data.isDone).toEqual(false)
     })
     expect(httpClientSpy.post.calls.count()).toEqual(1)
+    })
+
+    it('should update isDone when call markDone', ()=>{
+      httpClientSpy.put.and.returnValue(asyncData(
+        {
+          id: 0,
+          title: 'Homework',
+          description: 'Have to complete home work',
+          isDone: true,
+        }
+      ))
+      var item:ToDoItem ={
+          id: 0,
+          title: 'Homework',
+          description: 'Have to complete home work',
+          isDone: false,
+      }
+      service.update(0, item).subscribe(data => {
+        expect(data.id).toEqual(0),
+        expect(data.title).toEqual('Homework'),
+        expect(data.description).toEqual('Have to complete home work'),
+        expect(data.isDone).toEqual(true)
+      })
+      expect(httpClientSpy.put.calls.count()).toEqual(1)
     })
 });
 
