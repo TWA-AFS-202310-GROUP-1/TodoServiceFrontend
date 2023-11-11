@@ -21,14 +21,14 @@ export class TodoHttpService {
     });
   }
 
-  update(id: number) {
+  update(id: number,updatedValues: { title?: string, description?: string, isDone?: boolean }) {
     return this.getById(id).pipe(
       switchMap((toDoItem)=>{
       return this.httpClient.put('https://localhost:44309/ToDoItem/' + id, {
           id: id,
-          title: toDoItem.title,
-          description: toDoItem.description,
-          isDone: true,
+          title: updatedValues.title !== undefined ? updatedValues.title : toDoItem.title,
+          description: updatedValues.description !== undefined ? updatedValues.description : toDoItem.description,
+          isDone: updatedValues.isDone !== undefined ? updatedValues.isDone : toDoItem.isDone,
         });
     })
     )
