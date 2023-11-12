@@ -13,7 +13,7 @@ describe('TodohttpService', () => {
 
   beforeEach(() => {
     
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get','post','put','delete']);
     service = new TodohttpService(httpClientSpy)
   });
 
@@ -39,4 +39,16 @@ describe('TodohttpService', () => {
     expect(httpClientSpy.get.calls.count()).toEqual(1)
 
   });
+
+  it('should send post request to create a new todo item', () => {
+    const newTodo = { id: 1,title: 'New Task', description: 'New task description', isDone: false };
+    httpClientSpy.post.and.returnValue(asyncData(newTodo));
+  
+    service.create(newTodo.title, newTodo.description).subscribe(data => {
+      expect(data).toEqual(newTodo);
+    });
+  
+    expect(httpClientSpy.post.calls.count()).toEqual(1);
+  });
+  
 });
