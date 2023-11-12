@@ -40,8 +40,6 @@ export class TodoService {
     {
       item.isDone = true
     }
-    
-
   }
 
   getItemById(id:number) {

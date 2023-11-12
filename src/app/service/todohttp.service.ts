@@ -23,4 +23,8 @@ export class TodohttpService {
       isDone:false
     })
    }
+   delete(id: number) {
+    return this.httpClient.delete(`https://localhost:44309/ToDoItem/${id}`);
+  }
+  
 }
