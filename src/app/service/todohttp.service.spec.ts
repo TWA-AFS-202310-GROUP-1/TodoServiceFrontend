@@ -41,7 +41,7 @@ describe('TodohttpService', () => {
   });
 
   it('should send post request to create a new todo item', () => {
-    const newTodo = { id: 1,title: 'New Task', description: 'New task description', isDone: false };
+    const newTodo = { id: 42,title: 'New Task', description: 'New task description', isDone: false };
     httpClientSpy.post.and.returnValue(asyncData(newTodo));
   
     service.create(newTodo.title, newTodo.description).subscribe(data => {
@@ -50,5 +50,17 @@ describe('TodohttpService', () => {
   
     expect(httpClientSpy.post.calls.count()).toEqual(1);
   });
+
+  it('should send delete request to remove a todo item', () => {
+    const id = 1;
+    httpClientSpy.delete.and.returnValue(asyncData({ id: 1,title: 'New Task', description: 'New task description', isDone: false }));
+  
+    service.delete(id).subscribe(response => {
+      expect(response).toEqual({id: 1, title: 'New Task', description: 'New task description', isDone: false });
+    });
+  
+    expect(httpClientSpy.delete.calls.count()).toEqual(1);
+  });
+  
   
 });
