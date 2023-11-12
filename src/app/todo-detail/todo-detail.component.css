@@ -1,0 +1,19 @@
+label{
+    display: inline-block;
+    width:85px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 1em;
+    text-align: justify;
+    text-align-last: justify;
+    color: #7d4c10;
+}
+.detail{
+    font-size: 30px;
+    background: linear-gradient(to right, #78a7c4, #4aafbc);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.itemdetail{
+    font-size: 16px;
+}
