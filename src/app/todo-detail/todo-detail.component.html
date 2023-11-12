@@ -1,0 +1,10 @@
+<div>Todo detail</div>
+
+<div *ngIf="item">
+    <div>Id {{item.id}}</div>
+    <div>Title: <input [(ngModel)] = 'itemTitle'></div>
+    <div>Description: <input [(ngModel)] = 'itemDescription'></div>
+    <div>IsDone {{item.isDone}}</div>
+    <button (click)="onSave()">Save</button>
+
+</div>
