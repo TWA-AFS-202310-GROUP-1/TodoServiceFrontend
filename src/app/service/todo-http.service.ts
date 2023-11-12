@@ -8,13 +8,14 @@ import { ToDoItem } from 'src/model/ToDoItem';
 export class TodoHTTPService {
 
   constructor(private httpClient: HttpClient) { }
+  url = 'https://localhost:5001/ToDoItem/';
 
   getAll(){
-    return this.httpClient.get<ToDoItem[]>('https://localhost:5001/ToDoItem')
+    return this.httpClient.get<ToDoItem[]>(this.url)
   }
 
   create(title: string, description:string){
-    return this.httpClient.post<ToDoItem>('https://localhost:5001/ToDoItem',{
+    return this.httpClient.post<ToDoItem>(this.url,{
       title: title,
       description: description,
       isDone: false
@@ -23,19 +24,20 @@ export class TodoHTTPService {
 
   update(id: number, item: ToDoItem) {
     return this.httpClient.put<ToDoItem>(
-      'https://localhost:5001/ToDoItem/' + id, item
+      `${this.url}+${id}`, item
     );
   }
 
   getItemById(id: number) {
-    return this.httpClient.get<ToDoItem>(
-      'https://localhost:5001/ToDoItem/' + id
+    return this.httpClient.get<ToDoItem>(`${this.url}+${id}`
     );
   }
 
   delete(id: number) {
     return this.httpClient.delete<ToDoItem>(
-      'https://localhost:5001/ToDoItem/' + id
+      `${this.url}+${id}`
     );
   }
+
+  
 }

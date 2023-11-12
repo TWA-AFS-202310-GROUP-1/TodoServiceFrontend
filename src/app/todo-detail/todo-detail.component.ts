@@ -26,4 +26,12 @@ export class TodoDetailComponent {
           (this.itemTitle = i.title);
       });
     }
+
+    onSave(){
+      if (this.item){
+        this.item.description = this.itemDescription
+        this.item.title = this.itemTitle
+        this.todoHTTPservice.update(Number(this.itemId), this.item).subscribe()
+      }
+    }
 }

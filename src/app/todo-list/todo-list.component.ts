@@ -26,12 +26,9 @@ export class TodoListComponent {
       .subscribe((todoItems) => (this.items = todoItems));
   }
 
-  onMarkDone(id: number, item: ToDoItem) {
-    console.log('-------------------' + item.id);
-    item.isDone = true;
-    this.todoHTTPService.update(id, item).subscribe(() => {
-      this.refreshList();
-    });
+  onMarkDone(id: number, item:ToDoItem){
+    item.isDone = true
+    this.todoHTTPService.update(id, item).subscribe()    
   }
   onGoToDetail(id: number){
     this.router.navigateByUrl(`/detail/${id}`)

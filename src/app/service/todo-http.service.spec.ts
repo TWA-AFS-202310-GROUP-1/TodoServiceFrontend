@@ -80,5 +80,30 @@ describe('TodoHTTPService', () => {
     });
 
 
+    it('should update when call update', ()=>{
+      httpClientSpy.put.and.returnValue(asyncData(
+        {
+          id: 0,
+          title: 'xianke',
+          description: 'xianke2',
+          isDone: true,
+        }
+      ))
+      var item:ToDoItem ={
+          id: 0,
+          title: 'xianke',
+          description: 'xianke2',
+          isDone: false,
+      }
+      service.update(0, item).subscribe(data => {
+        expect(data.id).toEqual(0),
+        expect(data.title).toEqual('xianke'),
+        expect(data.description).toEqual('xianke2'),
+        expect(data.isDone).toEqual(true)
+      })
+      expect(httpClientSpy.put.calls.count()).toEqual(1)
+    })
+
+
 });
 
