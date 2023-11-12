@@ -10,7 +10,7 @@ import { TodohttpService } from '../service/todohttp.service';
 })
 export class CreateTodoComponent {
   @Output () created = new EventEmitter()
-  constructor(private formBuilder:FormBuilder, private todoService:TodoService,private todohttpService: TodohttpService){}
+  constructor(private formBuilder:FormBuilder,private todohttpService: TodohttpService){}
 
   todoForm = this.formBuilder.group({
     title: '',

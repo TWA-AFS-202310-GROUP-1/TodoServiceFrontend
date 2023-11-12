@@ -5,3 +5,9 @@
     <div>Description {{item.description}}</div>
     <div>IsDone {{item.isDone}}</div>
 </div>
+<form [formGroup]="todoForm" (ngSubmit)="onUpdate()">
+    <input formControlName="title"/>
+    <input formControlName="description"/>
+    <button type="submit">Update</button>
+  </form>
+  
