@@ -14,7 +14,7 @@ export class TodoHTTPService {
   }
 
   create(title: string, description:string){
-    return this.httpClient.post('https://localhost:5001/ToDoItem',{
+    return this.httpClient.post<ToDoItem>('https://localhost:5001/ToDoItem',{
       title: title,
       description: description,
       isDone: false
@@ -24,6 +24,18 @@ export class TodoHTTPService {
   update(id: number, item: ToDoItem) {
     return this.httpClient.put<ToDoItem>(
       'https://localhost:5001/ToDoItem/' + id, item
+    );
+  }
+
+  getItemById(id: number) {
+    return this.httpClient.get<ToDoItem>(
+      'https://localhost:5001/ToDoItem/' + id
+    );
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete<ToDoItem>(
+      'https://localhost:5001/ToDoItem/' + id
     );
   }
 }
