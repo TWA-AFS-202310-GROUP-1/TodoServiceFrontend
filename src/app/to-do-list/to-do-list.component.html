@@ -16,7 +16,9 @@
     <td><button (click)="onMarkDone(item.id, item)"
         [disabled]="item.isDone">Done</button>
         <button (click)="onGotoDetail(item.id)">View Detail</button>
-        <button (click)="onDelete(item.id)">Delete</button>
+        <button mat-mini-fab color="primary" (click)="onDelete(item.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
    
 </table>
