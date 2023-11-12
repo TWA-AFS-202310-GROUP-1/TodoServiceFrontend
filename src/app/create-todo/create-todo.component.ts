@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { TodoService } from '../service/todo.service';
 import { TodohttpService } from '../service/todohttp.service';
 
 @Component({
@@ -20,8 +19,6 @@ export class CreateTodoComponent {
   onSubmit (){
     const formValues = this.todoForm.value
     if(formValues.title && formValues.description){
-      // this.todoService.create(formValues.title, formValues.description)
-      // this.todoForm.reset()
       this.todohttpService.create(formValues.title,
         formValues.description).subscribe(()=>{
           this.todoForm.reset()
