@@ -24,7 +24,7 @@ export class TodohttpService {
     return this.httpClient.delete(`https://localhost:44309/ToDoItem/${id}`);
   }
   update(item: ToDoItem) {
-    return this.httpClient.put(
+    return this.httpClient.put<ToDoItem>(
       `https://localhost:44309/ToDoItem/${item.id}`,
       item
     );
@@ -37,7 +37,7 @@ export class TodohttpService {
   }
 
   markDone(item: ToDoItem) {
-    return this.httpClient.put(
+    return this.httpClient.put<ToDoItem>(
       `https://localhost:44309/ToDoItem/${item.id}`,
       item
     );
