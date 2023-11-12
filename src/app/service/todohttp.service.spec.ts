@@ -61,6 +61,18 @@ describe('TodohttpService', () => {
   
     expect(httpClientSpy.delete.calls.count()).toEqual(1);
   });
+
+  it('should send put request to update a todo item', () => {
+    const updatedTodo = { id: 1, title: 'Updated Task', description: 'Updated task description', isDone: true };
+    httpClientSpy.put.and.returnValue(asyncData(updatedTodo));
+  
+    service.update(updatedTodo).subscribe(data => {
+      expect(data).toEqual(updatedTodo);
+    });
+  
+    expect(httpClientSpy.put.calls.count()).toEqual(1);
+  });
+  
   
   
 });
