@@ -13,13 +13,9 @@
     <td>{{ item.description }}</td>
     <td>{{ item.isDone }}</td>
     <td>
-      <button (click)="OnMarkDone(item.id)" [disabled]="item.isDone">
-        Done
-      </button>
-      <button (click)="onGoToDetail(item.id)">
-        View Detail
-      </button>
-      <button [style.backgroundColor]='"red"' (click)="onDelete(item.id)">
+      <button (click)="OnMarkDone(item)" [disabled]="item.isDone">Done</button>
+      <button (click)="onGoToDetail(item.id)">View Detail</button>
+      <button [style.backgroundColor]="'red'" (click)="onDelete(item.id)">
         Delete
       </button>
     </td>

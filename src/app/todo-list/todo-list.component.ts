@@ -19,8 +19,9 @@ export class TodoListComponent {
     this.refreshList();
   }
 
-  OnMarkDone(id: number) {
-    this.todoHttpService.update(id, { isDone: true }).subscribe(() => {
+  OnMarkDone(item: ToDoItem) {
+    item.isDone = true 
+    this.todoHttpService.update(item).subscribe(() => {
       this.refreshList();
     });
   }

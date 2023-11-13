@@ -74,7 +74,7 @@ describe('TodoHttpService', () => {
     };
     httpClientSpy.put.and.returnValue(of(newItem));
     service
-      .update(1, { title: 'apple', description: 'Buy apple', isDone: true })
+      .update({ id: 1, title: 'apple', description: 'Buy apple', isDone: true })
       .subscribe((data) => {
         expect(data).toEqual(newItem);
       });
@@ -96,14 +96,16 @@ describe('TodoHttpService', () => {
   });
 
   it('should delete todo item by id when call delete', () => {
-    httpClientSpy.delete.and.returnValue(asyncData({
-      id: 1,
-      title: 'milk',
-      description: 'Buy milk',
-      isDone: false,
-    }));
+    httpClientSpy.delete.and.returnValue(
+      asyncData({
+        id: 1,
+        title: 'milk',
+        description: 'Buy milk',
+        isDone: false,
+      })
+    );
     service.delete(1).subscribe((data) => {
-      expect(data.id).toEqual(1)
+      expect(data.id).toEqual(1);
     });
     expect(httpClientSpy.delete.calls.count()).toEqual(1);
   });

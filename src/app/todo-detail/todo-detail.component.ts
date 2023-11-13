@@ -42,16 +42,20 @@ export class TodoDetailComponent {
   onSumbit() {
     const formValues = this.todoChangeForm.value;
     const id = this.activatedRouter.snapshot.paramMap.get('detailId');
-    if (formValues.title && formValues.description) {
-      this.todoHttpService
-        .update(Number(id), {
-          title: formValues.title,
-          description: formValues.description,
-        })
-        .subscribe(() => {
-          this.todoChangeForm.reset();
-          this.refreshDetail();
-        });
-    }
+    console.log(this.item)
+      if (formValues.title && formValues.description && this.item) {
+        this.todoHttpService
+          .update({
+            id: this.item.id,
+            title: formValues.title,
+            description: formValues.description,
+            isDone: this.item.isDone
+          })
+          .subscribe(() => {
+            this.todoChangeForm.reset();
+            this.refreshDetail();
+          });
+      }
+
   }
 }
