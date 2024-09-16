@@ -1,0 +1,10 @@
+a[routerLink] {
+    text-decoration: none; 
+    color: #007bff; 
+    cursor: pointer;
+  }
+  
+  a[routerLink]:hover {
+    color: #0015b3; 
+  }
+  

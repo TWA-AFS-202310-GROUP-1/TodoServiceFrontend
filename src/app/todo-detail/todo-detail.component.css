@@ -1,0 +1,15 @@
+  table {
+    border-collapse:separate;
+    margin-bottom: 20px;
+  }
+  tr {
+    background-color: #f9f9f9; 
+    border: none;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: none; 
+  }
+
+

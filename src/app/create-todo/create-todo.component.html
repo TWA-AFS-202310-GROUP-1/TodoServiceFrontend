@@ -1,0 +1,5 @@
+<form [formGroup]="todoForm" (ngSubmit)="onSumbit()">
+    Title:<input formControlName="title"/>
+    Description:<input formControlName="description"/>
+    <button type="submit">Add</button>
+</form>
